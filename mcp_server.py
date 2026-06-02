@@ -12,8 +12,21 @@ docs = {
     "spec.txt": "These specifications define the technical requirements for the equipment.",
 }
 
-# TODO: Write a tool to read a doc
-# TODO: Write a tool to edit a doc
+@mcp.tool()
+def read_doc(doc_id: str) -> str:
+    """Read the contents of a document by its ID."""
+    if doc_id not in docs:
+        return f"Error: document '{doc_id}' not found. Available docs: {', '.join(docs.keys())}"
+    return docs[doc_id]
+
+
+@mcp.tool()
+def update_doc(doc_id: str, content: str) -> str:
+    """Update the contents of a document by its ID."""
+    if doc_id not in docs:
+        return f"Error: document '{doc_id}' not found. Available docs: {', '.join(docs.keys())}"
+    docs[doc_id] = content
+    return f"Document '{doc_id}' updated successfully."
 # TODO: Write a resource to return all doc id's
 # TODO: Write a resource to return the contents of a particular doc
 # TODO: Write a prompt to rewrite a doc in markdown format
