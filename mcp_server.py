@@ -42,7 +42,7 @@ def get_doc_contents(doc_id: str) -> str:
 
 
 @mcp.prompt()
-def rewrite_as_markdown(doc_id: str) -> str:
+def rewrite(doc_id: str) -> str:
     """Prompt to rewrite a document in markdown format."""
     if doc_id not in docs:
         return f"Error: document '{doc_id}' not found."
@@ -50,7 +50,7 @@ def rewrite_as_markdown(doc_id: str) -> str:
 
 
 @mcp.prompt()
-def summarize_doc(doc_id: str) -> str:
+def summarize(doc_id: str) -> str:
     """Prompt to summarize a document."""
     if doc_id not in docs:
         return f"Error: document '{doc_id}' not found."
